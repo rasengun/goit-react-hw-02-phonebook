@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import s from './contactform.module.css';
 
 export const ContactForm = ({ onHandleSubmit }) => {
@@ -33,3 +35,7 @@ export const ContactForm = ({ onHandleSubmit }) => {
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onHandleSubmit: PropTypes.func.isRequired,
+};
