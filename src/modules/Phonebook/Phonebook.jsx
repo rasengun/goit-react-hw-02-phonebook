@@ -7,7 +7,6 @@ import ContactList from './ContactList/ContactList';
 class Phonebook extends Component {
   state = {
     contacts: [],
-    name: '',
     filter: '',
   };
 
