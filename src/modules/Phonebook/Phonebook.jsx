@@ -11,17 +11,11 @@ class Phonebook extends Component {
     filter: '',
   };
 
-  onHandleSubmit = e => {
-    e.preventDefault();
-
-    const name = e.target.elements.name.value;
-
+  onHandleSubmit = ({ name, number }) => {
     if (this.state.contacts.find(contact => contact.name === name)) {
       alert(`${name} is already in contacts`);
       return;
     }
-
-    const number = e.target.elements.number.value;
     const contact = { id: nanoid(), name, number };
     this.setState(({ contacts }) => ({ contacts: [contact, ...contacts] }));
   };

@@ -3,11 +3,33 @@ import PropTypes from 'prop-types';
 import s from './contactform.module.css';
 
 export const ContactForm = ({ onHandleSubmit }) => {
+  let userData = {
+    name: '',
+    number: '',
+  };
+
+  const resetForm = e => {
+    e.currentTarget.elements.name.value = '';
+    e.currentTarget.elements.number.value = '';
+  };
+
+  const onChangingInput = e => {
+    userData[e.currentTarget.name] = e.target.value;
+  };
+
   return (
-    <form className={s.contact} onSubmit={onHandleSubmit}>
+    <form
+      className={s.contact}
+      onSubmit={e => {
+        e.preventDefault();
+        onHandleSubmit(userData);
+        resetForm(e);
+      }}
+    >
       <label>
         Name
         <input
+          onChange={onChangingInput}
           className={s.input}
           type="text"
           name="name"
@@ -19,6 +41,7 @@ export const ContactForm = ({ onHandleSubmit }) => {
       <label>
         Number
         <input
+          onChange={onChangingInput}
           className={s.input}
           type="tel"
           name="number"
